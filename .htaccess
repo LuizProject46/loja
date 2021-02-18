@@ -1,0 +1,29 @@
+RewriteEngine On
+
+#RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+#RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+#RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+#RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+#RewriteCond %{HTTPS} =off
+#RewriteCond %{HTTP_HOST} !^localhost(.*)$ [NC]
+#RewriteCond %{HTTP_HOST} !^lojabeto\.(.*)$ [NC]
+#RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+#RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# Home
+RewriteRule ^$ index.php?qpage=home$3
+RewriteRule ^sobre$ index.php?qpage=about$3
+RewriteRule ^contato$ index.php?qpage=contact$3
+RewriteRule ^produtos$ index.php?qpage=products$3
+
+#Login Painel
+RewriteRule ^painel/login$ index.php?qpage=login\/login&loginview=1
+RewriteRule ^logout$ index.php?qpage=logout$3
+
+#API
+RewriteRule ^api$ index.php?qpage=api&noview=1
+
+#DASHBOARD
+RewriteRule ^dashboard$ index.php?qpage=dashboard\/dashboard&loginview=1
+RewriteRule ^produtos/novo$ index.php?qpage=dashboard\/new&loginview=1
+RewriteRule ^produtos/editar/(.*)$ index.php?qpage=dashboard\/edit&id=$1&loginview=1

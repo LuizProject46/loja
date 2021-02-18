@@ -1,0 +1,5 @@
+<?php
+
+$produtos = Products::getAll();
+
+?>
